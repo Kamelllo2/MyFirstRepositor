@@ -10,10 +10,24 @@ namespace ConsoleAppLesson_3
     {
         static void Main(string[] args)
         {
+            int MyAge = 0;
             Console.WriteLine("Привет! Как я могу к тебе обращаться?");
-            string MyName = Console.ReadLine();
-            Console.WriteLine(" Сколько тебе лет?");
-            int MyAge = int.Parse(Console.ReadLine());
+            string MyName = Console.ReadLine();            
+           while (MyAge == 0)
+            {
+                Console.WriteLine(" Сколько тебе лет?");
+                bool MyAgeValid = int.TryParse(Console.ReadLine(), out (MyAge));
+                if (MyAgeValid != true)
+                {
+                    Console.WriteLine("вы ввели не число");
+                }
+                if (MyAgeValid == true & MyAge<0 )
+                {
+                    Console.WriteLine("вы ввели отрицательное число");
+                    MyAge = 0;
+                }
+            }
+            
             Console.WriteLine(" а когда ты родился?");
             string birthday = Console.ReadLine();
             Console.WriteLine(" в каком городе сейчас проживаешь?");
